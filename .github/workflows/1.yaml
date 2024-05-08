@@ -4,7 +4,13 @@ on:
  pull_request:
 
 jobs:
-  steps:
-   - name: Checkout
-     run:  actions/checkout@v4
+ checkout-and-ls:
+   runs-on: windows-2022
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v4
+       with:
+          clean: true
+     - name: List files in repository
+       run: ls -la
 

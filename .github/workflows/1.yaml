@@ -12,6 +12,6 @@ jobs:
        with:
           clean: true
      - name: List files in repository
-       shell: msys2bash.cmd
+       shell: msys2bash
        run: ls -la
 

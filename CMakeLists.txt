@@ -17,9 +17,16 @@ endmacro()
 
 fetch_content_from_submodule(Catch2 vendor/Catch2)
 
-add_executable(address_book src/main.cpp src/address_book.cpp)
+add_executable(address_book src/main.cpp src/address_book.cpp src/synchronization.cpp)
 target_include_directories(address_book PRIVATE vendor)
+if (WIN32)
+target_link_libraries(address_book -lwsock32 -lws2_32)
+endif()
 
-add_executable(address_book_tests test/address_book_tests.cpp src/address_book.cpp)
+add_executable(address_book_tests test/address_book_tests.cpp src/address_book.cpp src/synchronization.cpp)
 target_include_directories(address_book_tests PRIVATE src vendor)
+if (WIN32)
+target_link_libraries(address_book_tests Catch2::Catch2WithMain  -lwsock32 -lws2_32)
+else()
 target_link_libraries(address_book_tests Catch2::Catch2WithMain)
+endif()

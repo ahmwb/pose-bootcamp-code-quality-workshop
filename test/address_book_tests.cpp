@@ -22,4 +22,13 @@ char	long_entry[] = "A012345679 B012345679 C012345679 D012345679 E012345679 F012
 
 	CHECK_THROWS( ab.add_entry(long_entry) );
 	CHECK_FALSE(ab.has_entry(long_entry));
+
+	ab.add_entry("alpha john");
+	CHECK(ab.has_entry("alpha john") );
+	CHECK(ab.has_entry("Alpha John") );
+
+using namespace std::chrono_literals;
+	ab.set_birthday("alpha john", std::chrono::month_day(std::chrono::February, 29d) );
+	CHECK( ab.get_birthday("alpha john") == std::chrono::month_day(std::chrono::February, 29d) );
+
 }

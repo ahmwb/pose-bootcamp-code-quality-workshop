@@ -4,7 +4,7 @@ on:
  pull_request:
 
 jobs:
- checkout-and-ls:
+ checkout,compiling and testing:
    runs-on: ubuntu-latest
    steps:
      - name: Checkout

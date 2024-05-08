@@ -17,6 +17,9 @@ jobs:
        run: cmake -S . -B build
      - name: Cmake Compile
        run: cmake --build build
+     - name: Run Selfcheck
+       run: ./build/address_book_tests.exe
+
 
 
 
